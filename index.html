@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mateus Natal</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Mateus Natal | Designer e Desenvolvedor Web</title>
+  <meta content="Portfólio de Mateus Natal: design gráfico, desenvolvimento front-end, back-end e criação de interfaces web." name="description">
+  <meta content="designer gráfico, desenvolvedor web, front-end, back-end, portfólio, Mateus Natal" name="keywords">
+
+  <!-- Aplica o tema salvo antes da renderização, evitando piscar a tela -->
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        if (saved === 'light' || saved === 'dark') {
+          theme = saved;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.svg?v=3" rel="icon" type="image/svg+xml">
+  <link href="assets/img/favicon-32.png?v=3" rel="icon" type="image/png" sizes="32x32">
+  <link href="assets/img/apple-touch-icon.png?v=3" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -24,47 +43,46 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+  <!-- Main CSS -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="assets/css/custom.css" rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- ======= Alternar tema (canto superior direito) ======= -->
+  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Alternar entre modo claro e escuro" title="Alternar tema">
+    <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+  </button>
+
   <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" aria-label="Abrir menu" aria-controls="navbar" aria-expanded="false"></i>
 
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/profile-img.png" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Mateus Natal</a></h1>
+        <img src="assets/img/profile-img.jpg" alt="Foto de Mateus Natal" class="img-fluid rounded-circle" width="600" height="600">
+        <h1 class="text-light"><a href="#hero">Mateus Natal</a></h1>
+        <p class="header-role">Designer &amp; Desenvolvedor Web</p>
+
         <div class="social-links mt-3 text-center">
-              <a href="#" class="instagram"><i class="bi bi-instagram"
-                onclick="window.open('https://www.instagram.com/mateusdiasnatal/', '_blank')"
-     style="cursor:pointer;"></i></a>
-          <a href="#" class="Spotify"><i class="bi bi-spotify" onclick="window.open('https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp?si=2550779bd7ad4241', '_blank')"
-     style="cursor:pointer;"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin" onclick="window.open('https://www.linkedin.com/in/mateus-natal/', '_blank')"
-     style="cursor:pointer;"></i></a>
+          <a href="https://wa.me/5531995076206?text=Ol%C3%A1%2C%20Mateus!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.instagram.com/mateusdiasnatal/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/mateus-natal/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/MateusNatal" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
         </div>
+
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Início</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Currículo</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portifólio</span></a></li>
+          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Serviços</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
         </ul>
@@ -73,10 +91,12 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
+      <p class="hero-eyebrow">Olá, eu sou</p>
       <h1>Mateus Natal</h1>
-      <p>Especialista em <span class="typed" data-typed-items="Design, JavaScript, Phyton, HTML/CSS, Inteligência Artificial"></span></p>
+      <p class="hero-subtitle">Trabalho com <span class="typed" data-typed-items="design gráfico,front-end,back-end,interfaces web"></span></p>
+      <a href="#portfolio" class="btn-get-started scrollto">Ver portfólio</a>
     </div>
   </section><!-- End Hero -->
 
@@ -92,33 +112,33 @@
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.png" class="img-fluid" alt="" style="border-radius: 10px;">
+            <img src="assets/img/sobre-foto.jpg" class="img-fluid about-photo" alt="Mateus Natal" width="800" height="1000" loading="lazy">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Designer &amp; Desenvolvedor Web.</h3>
+            <h3>Designer e desenvolvedor web</h3>
             <p class="fst-italic">
-              Sou um profissional que respira design e código. Com experiência em Design Gráfico e Desenvolvimento Web, transformo ideias em soluções digitais visualmente impactantes e tecnicamente sólidas. Meu foco é na excelência, usabilidade e nos resultados para o cliente.
+              Atuo na interseção entre design e código. Com experiência em design gráfico e desenvolvimento web, crio identidades visuais, materiais para produção e interfaces para a internet, cuidando tanto da aparência quanto do funcionamento.
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Aniversário:</strong> <span>16 Abril 1999</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>github.com/MateusNatal</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Telefone:</strong> <span>+55 31 9 9507-6206</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Aniversário:</strong> <span>16 de abril de 1999</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>GitHub:</strong> <span><a href="https://github.com/MateusNatal" target="_blank" rel="noopener noreferrer">github.com/MateusNatal</a></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>WhatsApp:</strong> <span><a href="https://wa.me/5531995076206" target="_blank" rel="noopener noreferrer">+55 (31) 9 9507-6206</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Cidade:</strong> <span>Belo Horizonte, MG</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Idade:</strong> <span>27 anos</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Grau:</strong> <span>Bacharel</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>mateusdaniel99@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Formação:</strong> <span>Bacharelado em andamento</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>E-mail:</strong> <span><a href="mailto:mateusdaniel99@gmail.com">mateusdaniel99@gmail.com</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Disponível</span></li>
                 </ul>
               </div>
             </div>
             <p>
-              Acredito que a tecnologia deve servir à arte, e o design deve guiar a função. Meu objetivo é criar produtos digitais que não apenas pareçam bons, mas que também funcionem perfeitamente e impulsionem o crescimento dos projetos dos meus clientes. Vamos criar algo incrível juntos!
+              Acredito que a tecnologia deve servir à arte e que o design deve guiar a função. Meu objetivo é criar produtos digitais que sejam bonitos, funcionem bem e ajudem o crescimento dos projetos dos meus clientes.
             </p>
           </div>
         </div>
@@ -132,74 +152,66 @@
 
         <div class="section-title">
           <h2>Habilidades</h2>
-          <p>Minhas habilidades combinam o lado técnico do desenvolvimento front-end com a criatividade e o domínio das ferramentas de design. O gráfico abaixo detalha o meu nível de proficiência nas principais linguagens, plataformas e softwares que utilizo.</p>
+          <p>Combino ferramentas de design com linguagens de desenvolvimento, do rascunho visual ao código que publica o projeto.</p>
         </div>
 
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">HTML/CSS <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+        <div class="row skills-groups">
+          <div class="col-lg-3 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="0">
+            <div class="skill-group">
+              <h3>Design e Branding</h3>
+              <ul class="skill-tags">
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>CorelDRAW</li>
+                <li>Identidade visual</li>
+                <li>Branding</li>
+                <li>Mockups</li>
+                <li>Design para impressão</li>
+              </ul>
             </div>
-
-            <div class="progress">
-              <span class="skill">Phyton <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-                                    <div class="progress">
-              <span class="skill">Illustrator <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
           </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+          <div class="col-lg-3 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-group">
+              <h3>Desenvolvimento Web</h3>
+              <ul class="skill-tags">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>React</li>
+                <li>UI/UX Design</li>
+                <li>Design responsivo</li>
+              </ul>
             </div>
-
-            <div class="progress">
-              <span class="skill">WordPress/CMS <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Photoshop <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CorelDraw <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
           </div>
-
+          <div class="col-lg-3 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-group">
+              <h3>IA e Dados</h3>
+              <ul class="skill-tags">
+                <li>Python</li>
+                <li>IA generativa</li>
+                <li>Engenharia de prompts</li>
+                <li>APIs de IA</li>
+                <li>Dashboards</li>
+                <li>Visualização de dados</li>
+                <li>Análise de dados</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-group">
+              <h3>Marketing Digital</h3>
+              <ul class="skill-tags">
+                <li>Meta Ads</li>
+                <li>Social Media</li>
+                <li>Criação de anúncios</li>
+                <li>Marketing de performance</li>
+                <li>Análise de campanhas</li>
+                <li>WordPress</li>
+                <li>Git e GitHub</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -210,66 +222,66 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Currículo/Experiência</h2>
-          <p>Construí minha carreira com base na formação contínua e na experiência prática em projetos desafiadores. Conheça minha trajetória profissional, desde a formação acadêmica até os principais marcos de experiência em Design Gráfico e Desenvolvimento Web.</p>
+          <h2>Currículo e experiência</h2>
+          <p>Minha trajetória combina formação técnica e experiência prática em projetos de design gráfico e desenvolvimento web.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Sumário</h3>
+            <h3 class="resume-title">Resumo</h3>
             <div class="resume-item pb-0">
               <h4>Mateus Natal</h4>
-              <p><em>Profissional criativo e orientado a resultados, com mais de 5 anos de experiência consolidada em Design Gráfico. Especializado em desenvolver soluções digitais e materiais de marketing user-centered (centrados no usuário), unindo estética visual com código de Front-end robusto e funcional.</em></p>
+              <p><em>Profissional criativo e orientado a resultados, com mais de 5 anos de experiência em design gráfico. Desenvolvo soluções digitais e materiais de marketing centrados no usuário, unindo estética visual e código front-end funcional.</em></p>
               <ul>
-                <li>Belo Horizonte, Minas Gerais, BR</li>
-                <li>(55) 31 9 9507-6206</li>
+                <li>Belo Horizonte, Minas Gerais, Brasil</li>
+                <li>+55 (31) 9 9507-6206</li>
                 <li>mateusdaniel99@gmail.com</li>
               </ul>
             </div>
 
-            <h3 class="resume-title">Educação</h3>
+            <h3 class="resume-title">Formação</h3>
             <div class="resume-item">
               <h4>Análise e Desenvolvimento de Sistemas</h4>
-              <h5>2024 - 2026</h5>
+              <h5>2024 – 2026</h5>
               <p><em>UNIAMÉRICA</em></p>
-              <p>Curso focado em programação, análise de requisitos e desenvolvimento de software, complementando a base de design com a capacidade técnica de construir soluções digitais completas e funcionais.</p>
+              <p>Formação em programação, análise de requisitos e desenvolvimento de software, complementando a base em design com capacidade técnica para construir soluções digitais completas.</p>
             </div>
             <div class="resume-item">
               <h4>Técnico em Finanças</h4>
-              <h5>2022 - 2023</h5>
+              <h5>2022 – 2023</h5>
               <p><em>SENAC Minas</em></p>
-              <p>Formação que agrega conhecimento em gestão financeira, análise de custos e orçamentos, permitindo uma visão de negócio mais estratégica na precificação e gestão de projetos de design e web.</p>
+              <p>Formação em gestão financeira, análise de custos e orçamentos, com visão de negócio aplicada à precificação de projetos de design e web.</p>
             </div>
             <div class="resume-item">
               <h4>Técnico em Design Gráfico</h4>
-              <h5>2020 - 2021</h5>
+              <h5>2020 – 2021</h5>
               <p><em>SENAC Minas</em></p>
-              <p>Formação especializada em identidade visual, editoração, pré-impressão e produção gráfica, fornecendo domínio nas ferramentas e técnicas essenciais para a criação de peças de alta qualidade.</p>
+              <p>Formação em identidade visual, editoração, pré-impressão e produção gráfica, com domínio das ferramentas e técnicas essenciais para peças de alta qualidade.</p>
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Experiência Profissional</h3>
+            <h3 class="resume-title">Experiência profissional</h3>
             <div class="resume-item">
-              <h4>Designer em Rei das Canecas BH</h4>
-              <h5>2024 - Presente</h5>
-              <p><em>Rei das Canecas BH - Trabalho remoto</em></p>
+              <h4>Designer – Rei das Canecas BH</h4>
+              <h5>2024 – 2026</h5>
+              <p><em>Trabalho remoto</em></p>
               <ul>
-                <li>Desenvolvi e implementei scripts em Python para automatizar o envio e organização de arquivos, reduzindo o tempo de processamento em 40%.</li>
-                <li>Crio artes personalizadas para silk e copos label, gerenciando uma média de 50 pedidos semanais com alta taxa de aprovação </li>
-                <li>Otimizei o atendimento ao cliente por meio de processos automatizados, reduzindo o tempo de resposta e melhorando a organização dos dados comerciais.</li>
-                <li>Atualizei e padronizei gabaritos e mockups dos produtos, garantindo precisão no layout final e agilizando o processo de aprovação junto aos clientes.</li>
+                <li>Desenvolvi e implementei scripts em Python para automatizar o envio e a organização de arquivos, reduzindo em 40% o tempo de processamento.</li>
+                <li>Crio artes personalizadas para silk e copos com label, com média de 50 pedidos semanais e alta taxa de aprovação.</li>
+                <li>Otimizei o atendimento ao cliente com processos automatizados, reduzindo o tempo de resposta e melhorando a organização dos dados comerciais.</li>
+                <li>Atualizei e padronizei gabaritos e mockups dos produtos, garantindo precisão no layout final e agilizando a aprovação pelos clientes.</li>
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Designer em Criativa Digital BH</h4>
-              <h5>2019 - 2022</h5>
+              <h4>Designer – Criativa Digital BH</h4>
+              <h5>2019 – 2022</h5>
               <p><em>Criativa Digital BH</em></p>
               <ul>
-                <li>Aumentei as vendas em 20% em três meses por meio de um atendimento ao cliente, focado na identificação de necessidades e na oferta de soluções customizadas.</li>
-                <li>Produzi e finalizei inúmeras peças gráficas impressas, garantindo 100% de conformidade com padrões de qualidade e prazos.</li>
+                <li>Aumentei as vendas em 20% em três meses com um atendimento focado na identificação de necessidades e na oferta de soluções personalizadas.</li>
+                <li>Produzi e finalizei diversas peças gráficas impressas, mantendo a conformidade com os padrões de qualidade e os prazos.</li>
                 <li>Otimizei o fluxo de produção, reduzindo em 30% o tempo de entrega ao organizar pedidos, preparar arquivos e coordenar fornecedores.</li>
-                <li>Realizei inspeções e controle de qualidade rigorosos em todas as etapas da produção (pré-impressão, impressão e acabamento), minimizando erros e desperdício de material.</li>
-                <li>Implementei um sistema de controle de estoque de insumos e materiais, assegurando a disponibilidade de recursos e evitando a interrupção da produção por falta de itens críticos.</li>
+                <li>Realizei inspeções e controle de qualidade em todas as etapas da produção (pré-impressão, impressão e acabamento), reduzindo erros e desperdício de material.</li>
+                <li>Implementei um controle de estoque de insumos e materiais, evitando a interrupção da produção por falta de itens críticos.</li>
               </ul>
             </div>
           </div>
@@ -284,110 +296,179 @@
 
         <div class="section-title">
           <h2>Portfólio</h2>
-          <p>Explore uma seleção dos meus melhores projetos em Design Gráfico e Desenvolvimento Web. Aqui você encontrará exemplos que demonstram minha capacidade de transformar ideias em soluções visuais criativas e experiências digitais funcionais.</p>
+          <p>Uma seleção de trabalhos em design gráfico, identidade visual, produtos promocionais e desenvolvimento web. Clique em um projeto e veja mais.</p>
         </div>
 
         <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Todos</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+          <div class="col-12 d-flex justify-content-center">
+            <ul id="portfolio-flters" role="tablist">
+              <li data-filter="*" class="filter-active" role="tab" tabindex="0" aria-selected="true">Todos</li>
+              <li data-filter=".filter-identidade" role="tab" tabindex="0" aria-selected="false">Identidade visual</li>
+              <li data-filter=".filter-web" role="tab" tabindex="0" aria-selected="false">Web</li>
+              <li data-filter=".filter-produtos" role="tab" tabindex="0" aria-selected="false">Produtos</li>
+              <li data-filter=".filter-embalagens" role="tab" tabindex="0" aria-selected="false">Embalagens</li>
+              <li data-filter=".filter-impressos" role="tab" tabindex="0" aria-selected="false">Impressos</li>
+              <li data-filter=".filter-placas" role="tab" tabindex="0" aria-selected="false">Placas</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-identidade filter-web filter-produtos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/gm-capa.jpg" class="img-fluid" alt="Gabriel Marques Escola de Inglês" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=gabriel-marques" class="portfolio-pill" aria-label="Veja mais sobre Gabriel Marques Escola de Inglês">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Identidade visual · Web · Produtos</span>
+                <h3><a href="portfolio-details.html?p=gabriel-marques">Gabriel Marques Escola de Inglês</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-identidade">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/mix-economia-logo.jpg" class="img-fluid" alt="Mix Economia" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=mix-economia" class="portfolio-pill" aria-label="Veja mais sobre Mix Economia">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Identidade visual</span>
+                <h3><a href="portfolio-details.html?p=mix-economia">Mix Economia</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-identidade filter-web">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/analytica-logo-principal.jpg" class="img-fluid" alt="Analytica" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=analytica" class="portfolio-pill" aria-label="Veja mais sobre Analytica">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Identidade visual · Web</span>
+                <h3><a href="portfolio-details.html?p=analytica">Analytica</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-identidade filter-produtos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/haras-identidade-logo.jpg" class="img-fluid" alt="Haras Conceição" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=haras-conceicao" class="portfolio-pill" aria-label="Veja mais sobre Haras Conceição">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Identidade visual · Produtos</span>
+                <h3><a href="portfolio-details.html?p=haras-conceicao">Haras Conceição</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-placas">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/drogaria-areal-placa-mockup.jpg" class="img-fluid" alt="Placas de rua personalizadas" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=drogaria-areal-placa" class="portfolio-pill" aria-label="Veja mais sobre Placas de rua personalizadas">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Placas</span>
+                <h3><a href="portfolio-details.html?p=drogaria-areal-placa">Placas de rua personalizadas</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-placas">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/placa-obra-floramar-mockup.jpg" class="img-fluid" alt="Placa de obra – Floramar" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=placa-obra-floramar" class="portfolio-pill" aria-label="Veja mais sobre Placa de obra – Floramar">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Placas</span>
+                <h3><a href="portfolio-details.html?p=placa-obra-floramar">Placa de obra – Floramar</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-impressos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/convite-casamento-lilian-mockup.jpg" class="img-fluid" alt="Convite de casamento – Lilian e Paulo" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=convite-casamento-lilian" class="portfolio-pill" aria-label="Veja mais sobre Convite de casamento – Lilian e Paulo">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Impressos</span>
+                <h3><a href="portfolio-details.html?p=convite-casamento-lilian">Convite de casamento – Lilian e Paulo</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-impressos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/cardapio-01-delicias-mockup.jpg" class="img-fluid" alt="Cardápios" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=cardapios" class="portfolio-pill" aria-label="Veja mais sobre Cardápios">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Impressos</span>
+                <h3><a href="portfolio-details.html?p=cardapios">Cardápios</a></h3>
+              </div>
+            </article>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-embalagens">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/amendoka-01-capa.jpg" class="img-fluid" alt="Amendo'Ká – Embalagens" loading="lazy" width="1200" height="900">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html?p=amendoka-embalagens" class="portfolio-pill" aria-label="Veja mais sobre Amendo'Ká – Embalagens">Veja mais</a>
               </div>
-            </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Embalagens</span>
+                <h3><a href="portfolio-details.html?p=amendoka-embalagens">Amendo'Ká – Embalagens</a></h3>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-produtos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/copos-capa.jpg" class="img-fluid" alt="Copos personalizados" loading="lazy" width="1200" height="900">
+              <div class="portfolio-links">
+                <a href="portfolio-details.html?p=copos" class="portfolio-pill" aria-label="Veja mais sobre Copos personalizados">Veja mais</a>
+              </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Produtos</span>
+                <h3><a href="portfolio-details.html?p=copos">Copos personalizados</a></h3>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-embalagens">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/trifecta-variante-1x1.jpg" class="img-fluid" alt="Trifecta" loading="lazy" width="1200" height="900">
+              <div class="portfolio-links">
+                <a href="portfolio-details.html?p=trifecta-campanha" class="portfolio-pill" aria-label="Veja mais sobre Trifecta">Veja mais</a>
+              </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Embalagens</span>
+                <h3><a href="portfolio-details.html?p=trifecta-campanha">Trifecta</a></h3>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-impressos">
+            <article class="portfolio-wrap">
+              <img src="assets/img/portfolio/villa-farm-folheto-mockup.jpg" class="img-fluid" alt="Villa Smart Farm" loading="lazy" width="1200" height="900">
+              <div class="portfolio-links">
+                <a href="portfolio-details.html?p=villa-smart-farm" class="portfolio-pill" aria-label="Veja mais sobre Villa Smart Farm">Veja mais</a>
+              </div>
+              <div class="portfolio-caption">
+                <span class="portfolio-cat">Impressos</span>
+                <h3><a href="portfolio-details.html?p=villa-smart-farm">Villa Smart Farm</a></h3>
+              </div>
+            </article>
           </div>
 
         </div>
@@ -401,43 +482,40 @@
 
         <div class="section-title">
           <h2>Serviços</h2>
-          <p>Com uma visão que integra design e tecnologia, ofereço soluções completas para a sua presença digital. Meus serviços são personalizados para garantir que sua marca não apenas pareça excelente, mas também funcione perfeitamente e alcance seus objetivos de negócio.</p>
+          <p>Ofereço soluções que unem design e tecnologia: da identidade visual ao site ou sistema que a marca usa no dia a dia.</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Design Gráfico Estratégico</a></h4>
-            <p class="description">Criação de identidade visual (logotipo, cores, tipografia) e materiais de comunicação que fortalecem sua marca e engajam seu público.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Desenvolvimento Front-end</a></h4>
-            <p class="description">Transformo layouts em código (HTML, CSS, JavaScript) com foco total em experiência do usuário (UX) e interfaces responsivas.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Criação de Websites Personalizados</a></h4>
-            <p class="description">Desenvolvimento completo de websites e landing pages, garantindo performance, segurança e uma navegação intuitiva para alcançar seus objetivos de negócio.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Design de UX/UI</a></h4>
-            <p class="description">Planejamento e design de interfaces (UI) com foco em usabilidade (UX), garantindo que seu produto digital seja fácil, agradável e eficiente de usar.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Branding e Posicionamento</a></h4>
-            <p class="description">Definição clara da sua proposta de valor e construção de uma marca forte e memorável, alinhada com seus objetivos de mercado.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Manutenção e Otimização</a></h4>
-            <p class="description">Suporte técnico contínuo, correção de bugs, otimização de velocidade (SEO) e atualizações para garantir que seu site funcione perfeitamente.</p>
-          </div>
-          <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">  
+        <div class="row services-grid">
+          <div class="col-lg-4 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="0">
+            <div class="skill-group">
+              <h3>Design gráfico e materiais visuais</h3>
+              <p class="service-text">Criação de identidades visuais, peças para impressão e materiais de comunicação, da arte-final à entrega pronta para produção.</p>
             </div>
-          </div>  
+          </div>
+          <div class="col-lg-4 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-group">
+              <h3>Desenvolvimento front-end</h3>
+              <p class="service-text">Transformo layouts em interfaces com HTML, CSS e JavaScript, com foco em responsividade, acessibilidade e boa experiência de uso.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-group">
+              <h3>Desenvolvimento back-end</h3>
+              <p class="service-text">Criação de rotinas e sistemas no servidor com Python e PHP, incluindo automações de processos e organização de dados.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-group">
+              <h3>Desenvolvimento web</h3>
+              <p class="service-text">Sites institucionais e landing pages completos, do layout à publicação, pensados para carregar rápido em qualquer tela.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 skill-col" data-aos="fade-up" data-aos-delay="400">
+            <div class="skill-group">
+              <h3>Interfaces e aplicações</h3>
+              <p class="service-text">Criação e manutenção de telas e painéis de aplicações web, com foco em navegação clara e facilidade de uso.</p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -449,46 +527,68 @@
 
         <div class="section-title">
           <h2>Contato</h2>
-          <p>Tem algo em mente? Não hesite em me chamar! Estou sempre disponível para conexões, novos projetos e boas conversas. Me mande um e-mail, um WhatsApp ou me encontre nas redes sociais abaixo. É só escolher!</p>
+          <p>Tem um projeto em mente? Me chame no WhatsApp ou envie um e-mail. Também é possível me encontrar nas redes sociais abaixo.</p>
         </div>
 
-        <div class="row" data-aos="fade-in">
+        <div class="row contact-row" data-aos="fade-in">
 
-          <div class="col-lg-12 d-flex align-items-stretch">
+          <div class="col-lg-6 d-flex">
             <div class="info">
 
-              <div class="email">
-               <i class="bi bi-envelope-at"></i>
-                <h4>Email:</h4>
-                <p>mateusdaniel99@gmail.com</p>
-              </div>
+              <a class="info-item" href="mailto:mateusdaniel99@gmail.com">
+                <i class="bi bi-envelope-at" aria-hidden="true"></i>
+                <div>
+                  <h4>E-mail</h4>
+                  <p>mateusdaniel99@gmail.com</p>
+                </div>
+              </a>
 
-              <div class="phone">
-                <i class="bi bi-whatsapp"></i>
-                <h4>Telefone / WhatsApp:</h4>
-                <p>+55 (31) 9 9507-6206</p>
-              </div>
+              <a class="info-item" href="https://wa.me/5531995076206?text=Ol%C3%A1%2C%20Mateus!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                <div>
+                  <h4>WhatsApp</h4>
+                  <p>+55 (31) 9 9507-6206</p>
+                </div>
+              </a>
 
-              
-              <div class="instagram" >
-                <i class="bi bi-instagram"
-                onclick="window.open('https://www.instagram.com/mateusdiasnatal/', '_blank')"
-     style="cursor:pointer;"></i>
-                <h4>Instagram:</h4>
-                <p>@mateusdiasnatal</p>
-              </div>
-            
-<div class="Spotify" >
-  <i class="bi bi-spotify" onclick="window.open('https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp?si=2550779bd7ad4241', '_blank')"
-     style="cursor:pointer;"></i>
-  <h4>Spotify:</h4>
-  <p>Mateus Natal</p>
-</div>
+              <a class="info-item" href="https://www.instagram.com/mateusdiasnatal/" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-instagram" aria-hidden="true"></i>
+                <div>
+                  <h4>Instagram</h4>
+                  <p>@mateusdiasnatal</p>
+                </div>
+              </a>
+
+              <a class="info-item" href="https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-spotify" aria-hidden="true"></i>
+                <div>
+                  <h4>Spotify</h4>
+                  <p>Mateus Natal</p>
+                </div>
+              </a>
+
+              <a class="info-item" href="https://github.com/MateusNatal" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-github" aria-hidden="true"></i>
+                <div>
+                  <h4>GitHub</h4>
+                  <p>github.com/MateusNatal</p>
+                </div>
+              </a>
 
             </div>
-            <img src="assets/img/foto1.jpg" width="300px" style=" " alt=" ">
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240097.0372428169!2d-44.128862093613655!3d-19.902640425040165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0x5b35795e3ad23997!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1706848279905!5m2!1spt-BR!2sbr" frameborder="0" style="border: 0;" width="100%" height="300px" allowfullscreen></iframe>
+
+          <div class="col-lg-6">
+            <figure class="contact-photo">
+              <img src="assets/img/contato-foto.jpg" alt="Retrato de Mateus Natal" loading="lazy" width="800" height="1000">
+            </figure>
+          </div>
+
+          <div class="col-12">
+            <div class="map-wrap">
+              <iframe title="Mapa de Belo Horizonte, MG" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240097.0372428169!2d-44.128862093613655!3d-19.902640425040165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0x5b35795e3ad23997!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1706848279905!5m2!1spt-BR!2sbr" style="border:0;" width="100%" height="300" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -500,11 +600,12 @@
   <footer id="footer">
     <div class="container">
       <div class="credits">
-        Criado por Mateus Natal
+        &copy; <span id="current-year">2026</span> Mateus Natal. Todos os direitos reservados.
       </div>
-  </footer><!-- End  Footer -->
+    </div>
+  </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -515,10 +616,10 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Main JS Files -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/site.js"></script>
 
 </body>
 

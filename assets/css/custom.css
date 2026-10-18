@@ -1,0 +1,1152 @@
+/*--------------------------------------------------------------
+# Identidade visual, tema claro/escuro e responsividade
+# Carregado depois de style.css; sobrescreve apenas o necessário.
+# O atributo data-theme em <html> é definido antes da renderização (ver <head>).
+--------------------------------------------------------------*/
+
+/* ---------- Tokens de cor ---------- */
+:root,
+:root[data-theme="light"] {
+  --c-bg: #ffffff;
+  --c-bg-alt: #f3f6fb;
+  --c-card: #ffffff;
+  --c-text: #272829;
+  --c-muted: #4e5366;
+  --c-heading: #0f2a4f;
+  --c-accent: #0f7fb5;
+  --c-accent-strong: #0b6a99;
+  --c-border: #d9e1ee;
+  --c-shadow: 0 10px 30px rgba(23, 59, 108, 0.08);
+  --c-focus: #0b6a99;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --c-bg: #0b1020;
+  --c-bg-alt: #121a33;
+  --c-card: #17203d;
+  --c-text: #eef1f8;
+  --c-muted: #c3c9da;
+  --c-heading: #ffffff;
+  --c-accent: #5cc8f5;
+  --c-accent-strong: #7fd6fa;
+  --c-border: #33405f;
+  --c-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --c-focus: #7fd6fa;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.65;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--c-accent-strong);
+}
+
+a:hover {
+  color: var(--c-accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#main section {
+  background: var(--c-bg);
+}
+
+#main section.section-bg {
+  background: var(--c-bg-alt);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Contraste no modo escuro ----------
+   O style.css do template fixa cores escuras em vários textos. Como o modo escuro
+   precisa ser legível em todo o site, os seletores de texto usam as cores de tema. */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] #main p,
+:root[data-theme="dark"] #main li,
+:root[data-theme="dark"] #main span,
+:root[data-theme="dark"] #main strong,
+:root[data-theme="dark"] #main em,
+:root[data-theme="dark"] #main h4,
+:root[data-theme="dark"] #main h5,
+:root[data-theme="dark"] #main .skill,
+:root[data-theme="dark"] #main .val,
+:root[data-theme="dark"] #main .services .title a,
+:root[data-theme="dark"] #main .contact .info p,
+:root[data-theme="dark"] #main .contact .info h4,
+:root[data-theme="dark"] #main .resume-item h4,
+:root[data-theme="dark"] #main .resume-title,
+:root[data-theme="dark"] #main .facts .count-box p {
+  color: var(--c-text) !important;
+}
+
+:root[data-theme="dark"] #main .section-title p,
+:root[data-theme="dark"] #main .resume-item h5,
+:root[data-theme="dark"] #main .services .description,
+:root[data-theme="dark"] #main .portfolio-caption .portfolio-cat {
+  color: var(--c-muted) !important;
+}
+
+:root[data-theme="dark"] #main h1,
+:root[data-theme="dark"] #main h2,
+:root[data-theme="dark"] #main h3,
+:root[data-theme="dark"] #main .section-title h2,
+:root[data-theme="dark"] #main .about .content h3,
+:root[data-theme="dark"] #main .resume-title,
+:root[data-theme="dark"] #main .resume-item h4,
+:root[data-theme="dark"] #main .portfolio-caption h3 a,
+:root[data-theme="dark"] #main .contact .info p {
+  color: var(--c-heading) !important;
+}
+
+:root[data-theme="dark"] #main .resume-item h4,
+:root[data-theme="dark"] #main .resume-title,
+:root[data-theme="dark"] #main .section-title h2,
+:root[data-theme="dark"] #main .about .content h3 {
+  color: var(--c-heading) !important;
+}
+
+:root[data-theme="dark"] #main .resume-item h5,
+:root[data-theme="dark"] #main .about .content ul i {
+  color: var(--c-accent) !important;
+}
+
+:root[data-theme="dark"] #main .contact .info-item p,
+:root[data-theme="dark"] #main .contact .info-item h4 {
+  color: var(--c-text) !important;
+}
+
+:root[data-theme="dark"] #main .contact .info-item h4 {
+  color: var(--c-muted) !important;
+}
+
+:root[data-theme="dark"] #main .skills .progress-bar-wrap,
+:root[data-theme="dark"] .progress-bar-wrap {
+  background: var(--c-border);
+}
+
+:root[data-theme="dark"] .section-title h2::after {
+  background: var(--c-accent);
+}
+
+:root[data-theme="dark"] .resume-item,
+:root[data-theme="dark"] .resume-item {
+  border-left-color: var(--c-accent);
+}
+
+:root[data-theme="dark"] .breadcrumbs ol li,
+:root[data-theme="dark"] .breadcrumbs ol a {
+  color: var(--c-muted);
+}
+
+:root[data-theme="dark"] .project-loading {
+  color: var(--c-muted);
+}
+
+/* ---------- Botão de tema: canto superior direito, discreto ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 10000;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+  color: var(--c-muted);
+  box-shadow: var(--c-shadow);
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  opacity: 1;
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+.theme-toggle i {
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* Em telas pequenas o botão de menu fica no mesmo canto; o tema fica ao lado */
+@media (max-width: 1199px) {
+  .theme-toggle {
+    right: 62px;
+    top: 13px;
+  }
+}
+
+/* ---------- Sidebar (mantém identidade escura nos dois temas) ---------- */
+#header .profile .header-role {
+  text-align: center;
+  color: #a8a9b4;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+#header .profile .social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#header .profile .social-links a {
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+#header .profile .social-links a:hover,
+#header .profile .social-links a:focus-visible {
+  background: #149ddd;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.nav-menu a:focus-visible {
+  outline-color: #149ddd;
+}
+
+/* ---------- Hero ---------- */
+#hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  height: auto;
+  padding: 120px 30px 80px;
+  background: #0b0a1f url("../img/hero-bg.jpg") center / cover no-repeat;
+}
+
+#hero:before {
+  background: linear-gradient(180deg, rgba(5, 4, 16, 0.62) 0%, rgba(5, 4, 16, 0.84) 100%);
+}
+
+#hero .hero-container {
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-family: "Poppins", sans-serif;
+  color: #c9d6ff !important;
+  font-size: 15px !important;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px !important;
+}
+
+#hero h1 {
+  font-size: clamp(40px, 7vw, 72px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+#hero .hero-subtitle {
+  font-size: clamp(18px, 2.6vw, 26px);
+  margin-bottom: 36px !important;
+  min-height: 2.2em;
+}
+
+#hero .hero-subtitle span {
+  color: #fff;
+  border-bottom-color: #c04bff;
+}
+
+.btn-get-started {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 30px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7b3cff, #c04bff);
+  color: #fff !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  box-shadow: 0 8px 24px rgba(123, 60, 255, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-get-started:hover,
+.btn-get-started:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(123, 60, 255, 0.45);
+  color: #fff !important;
+}
+
+.btn-small {
+  margin-top: 8px;
+}
+
+/* ---------- Títulos das seções ---------- */
+.section-title p {
+  color: var(--c-muted);
+  max-width: 720px;
+}
+
+/* ---------- Sobre ---------- */
+.about-photo,
+.contact-photo img {
+  border-radius: 16px;
+  box-shadow: var(--c-shadow);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+
+.about .content ul li {
+  flex-wrap: wrap;
+}
+
+.about .content ul a {
+  color: var(--c-accent-strong);
+  word-break: break-word;
+}
+
+/* ---------- Habilidades ---------- */
+.progress .skill .val {
+  color: var(--c-muted);
+}
+
+/* ---------- Currículo ---------- */
+.resume-item {
+  border-left-color: var(--c-accent);
+}
+
+/* ---------- Portfólio ---------- */
+#portfolio-flters {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  margin-bottom: 36px;
+}
+
+#portfolio-flters li {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  margin: 0;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+  color: var(--c-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#portfolio-flters li:hover,
+#portfolio-flters li:focus-visible {
+  color: var(--c-accent-strong);
+  border-color: var(--c-accent);
+}
+
+#portfolio-flters li.filter-active {
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: #fff;
+}
+
+.portfolio .portfolio-container {
+  row-gap: 24px;
+}
+
+.portfolio-item {
+  margin-bottom: 0;
+}
+
+/* Card: a imagem e o título ficam sempre visíveis; os botões só no hover/foco */
+.portfolio .portfolio-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio .portfolio-wrap:hover {
+  transform: translateY(-4px);
+}
+
+/* Remove a película branca do template sobre o card */
+.portfolio .portfolio-wrap::before {
+  display: none;
+}
+
+.portfolio .portfolio-wrap > img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--c-border);
+}
+
+.portfolio-caption {
+  padding: 14px 16px 16px;
+}
+
+.portfolio-cat {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--c-accent-strong);
+  font-weight: 600;
+}
+
+.portfolio-caption h3 {
+  margin: 4px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.portfolio-caption h3 a {
+  color: var(--c-heading);
+}
+
+.portfolio-caption h3 a:hover,
+.portfolio-caption h3 a:focus-visible {
+  color: var(--c-accent-strong);
+}
+
+/* Botões do card: ocultos por padrão (sobrescreve os valores do template) */
+.portfolio .portfolio-wrap .portfolio-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(5, 4, 16, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s, visibility 0.25s;
+  z-index: 3;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-links,
+.portfolio .portfolio-wrap:focus-within .portfolio-links {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  bottom: auto;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  height: 28px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f2a4f;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a i {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a + a {
+  border-left: 0;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover,
+.portfolio .portfolio-wrap .portfolio-links a:focus-visible {
+  background: #149ddd;
+  color: #fff;
+}
+
+/* ---------- Página de detalhe do projeto ---------- */
+.breadcrumbs {
+  background: var(--c-bg-alt);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.breadcrumbs ol li + li::before {
+  content: "/";
+  padding: 0 8px;
+  color: var(--c-muted);
+}
+
+.breadcrumbs ol li,
+.breadcrumbs ol a {
+  color: var(--c-muted);
+}
+
+.project-page #main {
+  padding-top: 0;
+}
+
+.portfolio-details {
+  background: var(--c-bg);
+}
+
+.project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-image {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow);
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-info,
+.portfolio-description {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 24px;
+  color: var(--c-text);
+}
+
+.portfolio-info + .portfolio-description {
+  margin-top: 20px;
+}
+
+.portfolio-info h3,
+.portfolio-description h2 {
+  color: var(--c-heading);
+}
+
+.portfolio-info h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--c-text);
+}
+
+.portfolio-info li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--c-border);
+}
+
+.portfolio-description h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.project-loading {
+  color: var(--c-muted);
+}
+
+.project-missing {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+}
+
+/* ---------- Serviços ---------- */
+.services-grid {
+  justify-content: center;
+}
+
+.services .icon-box {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 12px;
+  padding: 26px 24px;
+  margin-bottom: 24px;
+  height: calc(100% - 24px);
+  box-shadow: none;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.services .icon-box:hover {
+  transform: translateY(-2px);
+  border-left-color: #c04bff;
+}
+
+.services .icon-box .icon {
+  width: auto;
+  height: auto;
+  display: block;
+  background: none;
+  margin-bottom: 12px;
+}
+
+.services .icon-box .icon i {
+  font-size: 28px;
+  color: var(--c-accent);
+}
+
+.services .icon-box .title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.services .icon-box .description {
+  color: var(--c-muted);
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+/* ---------- Contato ---------- */
+.contact-row {
+  row-gap: 32px;
+}
+
+.contact .info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.contact .info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact .info-item:hover,
+.contact .info-item:focus-visible {
+  transform: translateX(4px);
+  border-color: var(--c-accent);
+  box-shadow: var(--c-shadow);
+  color: var(--c-text);
+}
+
+.contact .info-item i {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b3cff, #c04bff);
+  color: #fff;
+  font-size: 20px;
+}
+
+.contact .info-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--c-muted);
+}
+
+.contact .info-item p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--c-heading);
+  word-break: break-word;
+}
+
+.contact-photo {
+  margin: 0;
+  height: 100%;
+}
+
+.contact-photo img {
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+}
+
+.map-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+}
+
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+
+/* ---------- Rodapé ---------- */
+#footer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  z-index: auto;
+  background: var(--c-bg-alt);
+  border-top: 1px solid var(--c-border);
+  color: var(--c-muted);
+  padding: 24px 16px;
+  margin-left: 300px;
+}
+
+#footer .credits {
+  font-size: 14px;
+  color: var(--c-muted);
+  text-align: center;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 1199px) {
+  #footer {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 56px 0;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+
+  .about .content h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  section {
+    padding: 48px 0;
+  }
+
+  .section-title {
+    padding-bottom: 20px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+  }
+
+  .about .content ul li {
+    margin-bottom: 12px;
+  }
+
+  .portfolio .row,
+  .services .row {
+    --bs-gutter-x: 16px;
+  }
+
+  .portfolio-caption h3 {
+    font-size: 16px;
+  }
+
+  .map-wrap iframe {
+    height: 240px;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero {
+    padding: 100px 20px 60px;
+  }
+
+  #hero h1 {
+    font-size: 42px;
+  }
+
+  #hero .hero-subtitle {
+    font-size: 18px;
+  }
+
+  #portfolio-flters li {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .contact .info-item {
+    padding: 14px;
+  }
+
+  .about-photo,
+  .contact-photo img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* Em telas pequenas, a sidebar vira gaveta */
+@media (max-width: 1199px) {
+  #header {
+    width: 280px;
+    left: -280px;
+    max-width: 85vw;
+  }
+
+  .mobile-nav-active #header {
+    left: 0;
+  }
+}
+
+/* ---------- Habilidades: grupos com tags, sem porcentagens ---------- */
+.skills-groups {
+  row-gap: 24px;
+}
+
+.skill-group {
+  height: 100%;
+  padding: 24px;
+  border-radius: 14px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow);
+}
+
+.skill-group h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--c-heading);
+}
+
+.skill-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tags li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg-alt);
+  color: var(--c-text);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ---------- Correções de legibilidade ---------- */
+/* Filtro ativo: o template define a cor azul sobre o fundo azul; aqui o texto fica branco */
+.portfolio #portfolio-flters li.filter-active,
+.portfolio #portfolio-flters li.filter-active:hover {
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: #ffffff;
+}
+
+/* Datas do currículo: o template usa fundo cinza com texto escuro, ilegível no modo escuro */
+.resume .resume-item h5 {
+  display: inline-block;
+  margin: 2px 0 10px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--c-border);
+  color: var(--c-heading);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------- Botões do portfólio: pílulas compactas com contraste garantido ---------- */
+#main .portfolio .portfolio-wrap .portfolio-links a,
+#main .portfolio .portfolio-wrap .portfolio-links a span,
+#main .portfolio .portfolio-wrap .portfolio-links a i {
+  color: #0f2a4f !important;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  height: 26px;
+  padding: 0 10px;
+  gap: 4px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a i {
+  font-size: 13px;
+}
+
+/* ---------- Serviços: mesmo visual dos cards de Habilidades ---------- */
+.services .icon-box {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--c-shadow);
+  transition: none;
+}
+
+.services .icon-box:hover {
+  transform: none;
+  border-color: var(--c-border);
+}
+
+.services .icon-box .icon {
+  margin-bottom: 12px;
+}
+
+.services .icon-box .icon i {
+  font-size: 24px;
+}
+
+.services .icon-box .title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-heading);
+  margin-bottom: 10px;
+}
+
+/* ---------- Botões do hover: tamanho proporcional ao card, sem preencher a imagem ---------- */
+.portfolio .portfolio-wrap {
+  container-type: inline-size;
+}
+
+.portfolio .portfolio-wrap .portfolio-links {
+  background: transparent;
+  gap: clamp(6px, 2cqw, 10px);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  height: clamp(24px, 8cqw, 34px);
+  padding: 0 clamp(8px, 3cqw, 14px);
+  gap: clamp(3px, 1cqw, 5px);
+  font-size: clamp(10px, 3.2cqw, 13px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a i {
+  font-size: clamp(12px, 3.6cqw, 16px);
+}
+
+/* ---------- Serviços: texto dentro do mesmo card de Habilidades ---------- */
+.services .service-text {
+  color: var(--c-muted);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* ---------- Serviços: espaçamento vertical entre os cards ---------- */
+.services-grid {
+  row-gap: 28px;
+}
+
+/* ---------- Filtros do portfólio: sem caixa branca, cores do tema ---------- */
+.portfolio #portfolio-flters {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.portfolio #portfolio-flters li {
+  color: var(--c-text);
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  margin-bottom: 0;
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li:focus-visible {
+  color: var(--c-accent-strong);
+  border-color: var(--c-accent);
+}
+
+.portfolio #portfolio-flters li.filter-active,
+.portfolio #portfolio-flters li.filter-active:hover {
+  color: #ffffff;
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+}
+
+/* ---------- Contato: foto com a altura de toda a coluna de botões; ícones brancos ---------- */
+.contact-row > .col-lg-6:nth-child(2) {
+  display: flex;
+}
+
+.contact-photo {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.contact-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  aspect-ratio: auto;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+}
+
+@media (max-width: 991px) {
+  .contact-photo img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+#main .contact .info-item i,
+#main .contact .info-item:hover i,
+#main .contact .info-item:focus-visible i {
+  color: #ffffff !important;
+}
+
+/* ---------- Contato: foto menor, centralizada na coluna ---------- */
+.contact-row > .col-lg-6:nth-child(2) {
+  align-items: center;
+}
+
+.contact-photo {
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+  min-height: 0;
+  flex: none;
+  display: block;
+}
+
+.contact-photo img {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+}
+
+/* ---------- Botão "Veja mais": metade da largura do card ---------- */
+.portfolio .portfolio-wrap .portfolio-links a.portfolio-pill {
+  width: 50cqw;
+  height: clamp(26px, 9cqw, 36px);
+  padding: 0;
+  font-size: clamp(11px, 3.4cqw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- Capa da categoria (Copos, Villa Smart Farm) ---------- */
+.category-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 36px;
+  padding: 16px;
+  max-width: 560px;
+  border-radius: 14px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow);
+}
+
+.category-cover[hidden] {
+  display: none;
+}
+
+.category-cover img {
+  display: block;
+  max-width: 100%;
+  max-height: 340px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
