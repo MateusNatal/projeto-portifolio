@@ -254,15 +254,125 @@ img {
 
 /* ---------- Hero ---------- */
 #hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 100vh;
   min-height: 100svh;
   height: auto;
   padding: 120px 30px 80px;
-  background: #0b0a1f url("../img/hero-bg.jpg") center / cover no-repeat;
+  background: #03020a;
 }
 
+/* Centro escuro para legibilidade; as bordas ficam livres para brilhar */
 #hero:before {
-  background: linear-gradient(180deg, rgba(5, 4, 16, 0.62) 0%, rgba(5, 4, 16, 0.84) 100%);
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(3, 2, 10, 0.8) 0%, rgba(3, 2, 10, 0.45) 60%, rgba(3, 2, 10, 0.1) 100%);
+}
+
+/* Fundo animado em aurora neon (substitui a antiga imagem hero-bg.jpg) */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob,
+.aurora-wave {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.aurora-blob {
+  width: 55vw;
+  height: 55vw;
+  max-width: 760px;
+  max-height: 760px;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+}
+
+/* Luzes concentradas nas bordas e cantos */
+.blob-1 {
+  top: -22%;
+  left: -18%;
+  background: radial-gradient(circle, rgba(255, 45, 173, 0.85) 0%, rgba(139, 61, 255, 0.45) 45%, transparent 70%);
+  animation: aurora-drift-1 24s ease-in-out infinite;
+}
+
+.blob-2 {
+  top: -20%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(0, 229, 208, 0.8) 0%, rgba(59, 130, 246, 0.45) 45%, transparent 70%);
+  animation: aurora-drift-2 28s ease-in-out infinite;
+}
+
+.blob-3 {
+  bottom: -28%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(139, 61, 255, 0.8) 0%, rgba(59, 130, 246, 0.35) 50%, transparent 70%);
+  animation: aurora-drift-3 30s ease-in-out infinite;
+}
+
+.blob-4 {
+  bottom: -26%;
+  right: -16%;
+  background: radial-gradient(circle, rgba(0, 229, 208, 0.75) 0%, rgba(59, 130, 246, 0.4) 45%, transparent 70%);
+  animation: aurora-drift-4 22s ease-in-out infinite;
+}
+
+/* Faixa de energia que percorre discretamente a parte inferior */
+.aurora-wave {
+  left: -20%;
+  right: -20%;
+  bottom: 6%;
+  height: 38%;
+  background: linear-gradient(100deg, transparent 0%, rgba(139, 61, 255, 0.5) 25%, rgba(0, 229, 208, 0.55) 55%, transparent 80%);
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  transform: rotate(-8deg);
+  animation: aurora-wave-flow 26s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate3d(8vw, 6vh, 0) scale(1.12); opacity: 0.85; }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.7; }
+  50% { transform: translate3d(-7vw, 5vh, 0) scale(0.95); opacity: 0.5; }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.98); opacity: 0.55; }
+  50% { transform: translate3d(6vw, -5vh, 0) scale(1.1); opacity: 0.8; }
+}
+
+@keyframes aurora-drift-4 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate3d(-6vw, -4vh, 0) scale(1.08); opacity: 0.75; }
+}
+
+@keyframes aurora-wave-flow {
+  0%, 100% { transform: translate3d(-4%, 0, 0) rotate(-8deg); opacity: 0.35; }
+  50% { transform: translate3d(4%, -3%, 0) rotate(-6deg); opacity: 0.55; }
+}
+
+@media (max-width: 575px) {
+  .aurora-blob {
+    filter: blur(50px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .aurora-wave {
+    animation: none;
+  }
 }
 
 #hero .hero-container {
@@ -327,7 +437,7 @@ img {
 /* ---------- Títulos das seções ---------- */
 .section-title p {
   color: var(--c-muted);
-  max-width: 720px;
+  max-width: 960px;
 }
 
 /* ---------- Sobre ---------- */
@@ -1149,4 +1259,379 @@ img {
   height: auto;
   object-fit: contain;
   border-radius: 10px;
+}
+
+/* ---------- Habilidades e serviços: brilho neon sutil ---------- */
+/* Habilidades: contorno único azul-acinzentado; hover com brilho em uma só cor */
+.skill-tags li {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-tags li:hover {
+  border-color: rgba(92, 200, 245, 0.6);
+  box-shadow: 0 0 14px rgba(92, 200, 245, 0.25);
+}
+
+.skill-group {
+  transition: box-shadow 0.3s ease;
+}
+
+.skill-group:hover {
+  box-shadow: 0 0 22px rgba(92, 200, 245, 0.12);
+}
+
+.services .icon-box {
+  box-shadow: 0 0 22px rgba(139, 61, 255, 0.14), 0 0 40px rgba(0, 229, 208, 0.07);
+}
+
+.services .icon-box:hover {
+  box-shadow: 0 0 26px rgba(255, 45, 173, 0.28), 0 0 44px rgba(0, 229, 208, 0.14);
+}
+
+/* ---------- Botão voltar ao topo: fundo escuro com contorno neon ---------- */
+/* Duas camadas de fundo: a primeira preenche o interior escuro, a segunda vira o contorno em gradiente */
+.back-to-top {
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(#0b0a1f, #0b0a1f) padding-box, linear-gradient(135deg, #8b3dff 0%, #ff2dad 50%, #00e5d0 100%) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 0 16px rgba(139, 61, 255, 0.35), 0 0 30px rgba(0, 229, 208, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s, visibility 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #e8ecff;
+  text-shadow: 0 0 8px rgba(0, 229, 208, 0.7);
+  transition: text-shadow 0.3s ease;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: linear-gradient(#0b0a1f, #0b0a1f) padding-box, linear-gradient(135deg, #8b3dff 0%, #ff2dad 50%, #00e5d0 100%) border-box;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(255, 45, 173, 0.5), 0 0 40px rgba(0, 229, 208, 0.3);
+}
+
+.back-to-top:hover i,
+.back-to-top:focus-visible i {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 45, 173, 0.8);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #00e5d0;
+  outline-offset: 4px;
+}
+
+@media (max-width: 575px) {
+  .back-to-top {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .back-to-top i {
+    font-size: 26px;
+  }
+}
+
+/* ---------- Sidebar: glow na foto e nos botões sociais ---------- */
+/* Sem borda: o brilho difuso fica diretamente em volta da foto */
+#header .profile img {
+  border: 0;
+  box-shadow: 0 0 24px rgba(139, 61, 255, 0.22), 0 0 48px rgba(0, 229, 208, 0.12), 0 0 72px rgba(255, 45, 173, 0.06);
+  animation: profile-glow 7s ease-in-out infinite;
+}
+
+/* Variação lenta da intensidade luminosa, sem pulsar de forma chamativa */
+@keyframes profile-glow {
+  0%, 100% {
+    box-shadow: 0 0 22px rgba(139, 61, 255, 0.18), 0 0 44px rgba(0, 229, 208, 0.1), 0 0 68px rgba(255, 45, 173, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(139, 61, 255, 0.28), 0 0 54px rgba(0, 229, 208, 0.16), 0 0 80px rgba(255, 45, 173, 0.08);
+  }
+}
+
+/* Todos os botões sociais usam o roxo do glow da foto, em brilho mais suave */
+#header .profile .social-links a {
+  box-shadow: 0 0 10px rgba(139, 61, 255, 0.28), 0 0 20px rgba(139, 61, 255, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+#header .profile .social-links a:hover,
+#header .profile .social-links a:focus-visible {
+  box-shadow: 0 0 14px rgba(139, 61, 255, 0.45), 0 0 26px rgba(139, 61, 255, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #header .profile img {
+    animation: none;
+  }
+}
+
+/* ---------- Contato: frase sem quebra forçada em telas largas ---------- */
+@media (min-width: 768px) {
+  .text-nowrap-md {
+    white-space: nowrap;
+  }
+}
+
+/* ---------- Carrossel de destaques (Portfólio) ---------- */
+/* Ocupa toda a largura do container para mostrar vários projetos ao mesmo tempo */
+.showcase {
+  max-width: none;
+  margin: 0 auto 48px;
+}
+
+/* Fade nas extremidades: suave, para não esconder os projetos próximos ao centro */
+.showcase-swiper {
+  padding: 28px 0 36px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.showcase-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+/* Cards maiores; sem glow externo, só borda discreta */
+.showcase-swiper .showcase-slide {
+  position: relative;
+  width: clamp(320px, 36vw, 560px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 18px;
+  background: var(--c-card);
+  cursor: pointer;
+  text-align: left;
+  opacity: 0.7;
+  transform: scale(0.88);
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out, border-color 0.8s ease-in-out;
+}
+
+/* Projeto central: escala maior e 100% de opacidade, sem brilho ao redor */
+.showcase-swiper .showcase-slide.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+.showcase-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 2, 10, 0) 45%, rgba(3, 2, 10, 0.85) 100%);
+  pointer-events: none;
+}
+
+.showcase-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  color: #fff;
+}
+
+.showcase-cat {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #c9d6ff;
+}
+
+.showcase-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.showcase-swiper .showcase-slide:focus-visible {
+  outline: 2px solid #00e5d0;
+  outline-offset: 4px;
+}
+
+/* Painel de detalhes: abre e fecha com transição de altura, fade e escala.
+   O wrapper anima a altura, então o conteúdo abaixo desliza em vez de pular. */
+.showcase-details-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 320ms cubic-bezier(0.4, 0, 1, 1), visibility 0s linear 320ms;
+}
+
+.showcase-details-wrap.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 450ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+}
+
+.showcase-details {
+  min-height: 0;
+  overflow: hidden;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  transition: opacity 260ms cubic-bezier(0.4, 0, 1, 1), transform 260ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.showcase-details-wrap.is-open .showcase-details {
+  opacity: 1;
+  transform: none;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Conteúdo em cascata ao abrir: categoria, título, texto e botões entram em sequência */
+.showcase-details > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms cubic-bezier(0.4, 0, 1, 1), transform 200ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.showcase-details-wrap.is-open .showcase-details > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1), transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showcase-details-wrap.is-open .showcase-details > :nth-child(1) {
+  transition-delay: 120ms;
+}
+
+.showcase-details-wrap.is-open .showcase-details > :nth-child(2) {
+  transition-delay: 180ms;
+}
+
+.showcase-details-wrap.is-open .showcase-details > :nth-child(3) {
+  transition-delay: 240ms;
+}
+
+.showcase-details-wrap.is-open .showcase-details > :nth-child(4) {
+  transition-delay: 300ms;
+}
+
+.showcase-details-cat {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.showcase-details-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--c-heading);
+  margin-bottom: 10px;
+}
+
+.showcase-details-text {
+  color: var(--c-muted);
+  margin-bottom: 0;
+}
+
+/* Os dois botões do painel têm o mesmo tamanho e estilo, centralizados no card */
+.showcase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.showcase-actions > a,
+.btn-showcase-resume {
+  width: 220px;
+  max-width: 100%;
+  margin: 0;
+  min-height: 48px;
+  padding: 12px 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7b3cff, #c04bff);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  box-shadow: 0 8px 24px rgba(123, 60, 255, 0.35);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.showcase-actions > a:hover,
+.showcase-actions > a:focus-visible,
+.btn-showcase-resume:hover,
+.btn-showcase-resume:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(123, 60, 255, 0.45);
+  color: #fff;
+}
+
+@media (max-width: 575px) {
+  .showcase-swiper .showcase-slide {
+    width: 66vw;
+  }
+
+  .showcase-title {
+    font-size: 16px;
+  }
+
+  .showcase-details {
+    padding: 20px;
+  }
+
+  .showcase-details-title {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .showcase-swiper .showcase-slide {
+    width: 46vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-swiper .showcase-slide,
+  .showcase-details-wrap,
+  .showcase-details,
+  .showcase-details > * {
+    transition: none;
+  }
 }

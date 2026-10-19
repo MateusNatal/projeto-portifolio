@@ -83,7 +83,7 @@
       description: "Placas de rua personalizadas com o nome da rua, o logotipo e os contatos do estabelecimento, apresentadas em mockup e na arte final. Exemplos: Drogaria Areal e Drogamaxi."
     },
     "placa-obra-floramar": {
-      title: "Placa de obra – Floramar",
+      title: "Placa de obra",
       category: "Placas",
       images: [
         "assets/img/portfolio/placa-obra-floramar-mockup.jpg",
@@ -92,7 +92,7 @@
       description: "Placa de identificação da obra Floramar, com os dados do projeto e do responsável técnico, apresentada em mockup no canteiro e na arte final."
     },
     "convite-casamento-lilian": {
-      title: "Convite de casamento – Lilian e Paulo",
+      title: "Convite de casamento",
       category: "Impressos",
       images: [
         "assets/img/portfolio/convite-casamento-lilian-mockup.jpg",
@@ -118,7 +118,7 @@
       description: "Cardápios para as marcas Delícias (açaí), Trinity Lounge e Toro, apresentados em mockup em bar e na arte final de cada página."
     },
     "amendoka-embalagens": {
-      title: "Amendo'Ká – Embalagens",
+      title: "Amendo'Ká",
       category: "Embalagens",
       images: [
         "assets/img/portfolio/amendoka-01-capa.jpg",
@@ -277,6 +277,65 @@
   }
 
 
+  /* ---------- Carrossel de destaques do portfólio ---------- */
+  function showProjectDetails(slug) {
+    const panel = document.getElementById("showcase-details");
+    const project = Object.prototype.hasOwnProperty.call(PROJECTS, slug) ? PROJECTS[slug] : null;
+    if (!panel || !project) return;
+
+    panel.querySelector(".showcase-details-cat").textContent = project.category;
+    panel.querySelector(".showcase-details-title").textContent = project.title;
+    panel.querySelector(".showcase-details-text").textContent = project.description;
+    panel.querySelector(".showcase-details-link").setAttribute("href", "portfolio-details.html?p=" + encodeURIComponent(slug));
+    // Abre o cartão pela transição CSS, sem trocar display (evita saltos no layout)
+    const wrap = document.getElementById("showcase-details-wrap");
+    if (wrap) {
+      wrap.inert = false;
+      wrap.classList.add("is-open");
+    }
+  }
+
+  function initShowcase() {
+    const carousel = document.querySelector(".showcase-swiper");
+    if (!carousel || !window.Swiper) return;
+
+    const panel = document.getElementById("showcase-details");
+    const resumeBtn = panel ? panel.querySelector(".btn-showcase-resume") : null;
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const swiper = new Swiper(carousel, {
+      slidesPerView: "auto",
+      centeredSlides: true,
+      loop: true,
+      spaceBetween: 24,
+      speed: 900,
+      slideToClickedSlide: true,
+      // Qualquer interação do usuário (toque, arrasto ou clique) interrompe a passagem automática
+      autoplay: reduceMotion ? false : { delay: 4000, disableOnInteraction: true }
+    });
+
+    // Delegação de eventos: também funciona nos slides clonados pelo modo loop
+    carousel.addEventListener("click", function (e) {
+      const slide = e.target.closest(".showcase-slide");
+      if (!slide) return;
+      if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
+      showProjectDetails(slide.dataset.project);
+      if (resumeBtn) resumeBtn.hidden = reduceMotion;
+    });
+
+    if (resumeBtn) {
+      resumeBtn.addEventListener("click", function () {
+        if (swiper.autoplay && swiper.autoplay.start) swiper.autoplay.start();
+        // Fecha com a transição CSS; o cartão só fica invisível e inativo ao fim dela
+        const wrap = document.getElementById("showcase-details-wrap");
+        if (wrap) {
+          wrap.classList.remove("is-open");
+          wrap.inert = true;
+        }
+      });
+    }
+  }
+
   /* ---------- Ano atual no rodapé ---------- */
   function setYear() {
     const el = document.getElementById("current-year");
@@ -287,6 +346,7 @@
   function init() {
     initTheme();
     renderProject();
+    initShowcase();
     setYear();
   }
 
