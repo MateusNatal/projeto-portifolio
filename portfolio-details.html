@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Projeto | Mateus Natal</title>
-  <meta content="Detalhes de um projeto do portfólio de Mateus Natal." name="description">
+  <meta content="Estudo de caso de um projeto do portfólio de Mateus Natal." name="description">
 
   <script>
     (function () {
-      var theme = 'light';
+      var theme = 'dark';
       try {
         var saved = localStorage.getItem('portfolio-theme');
-        if (saved === 'light' || saved === 'dark') {
-          theme = saved;
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          theme = 'dark';
-        }
+        if (saved === 'light' || saved === 'dark') theme = saved;
       } catch (e) {}
       document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js');
     })();
   </script>
 
@@ -29,13 +26,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/custom.css" rel="stylesheet">
@@ -43,65 +38,70 @@
 
 <body class="project-page">
 
-  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Alternar entre modo claro e escuro" title="Alternar tema">
-    <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
-  </button>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
-  <i class="bi bi-list mobile-nav-toggle d-xl-none" role="button" aria-label="Abrir menu" aria-controls="navbar" aria-expanded="false"></i>
+  <div class="topbar">
+    <a href="index.html" class="topbar-brand">Mateus Natal</a>
+    <button type="button" class="nav-toggle" aria-controls="header" aria-expanded="false" aria-label="Abrir menu">
+      <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="nav-backdrop" data-nav-close></div>
 
-  <header id="header">
-    <div class="d-flex flex-column">
+  <header id="header" class="sidebar">
+    <div class="sidebar-inner">
 
       <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="Foto de Mateus Natal" class="img-fluid rounded-circle" width="600" height="600">
-        <h1 class="text-light"><a href="index.html">Mateus Natal</a></h1>
-        <p class="header-role">Designer &amp; Desenvolvedor Web</p>
-
-        <div class="social-links mt-3 text-center">
-          <a href="https://wa.me/5531995076206?text=Ol%C3%A1%2C%20Mateus!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="https://www.instagram.com/mateusdiasnatal/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/mateus-natal/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://github.com/MateusNatal" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
-        </div>
-
+        <img src="assets/img/profile-img.jpg" alt="Foto de Mateus Natal" class="profile-photo" width="600" height="600">
+        <p class="profile-name"><a href="index.html">Mateus Natal</a></p>
+        <p class="profile-role">Designer &amp; Desenvolvedor Web</p>
+        <ul class="social-links" aria-label="Redes sociais">
+          <li><a href="https://wa.me/5531995076206?text=Ol%C3%A1%2C%20Mateus!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/mateusdiasnatal/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/mateus-natal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+          <li><a href="https://github.com/MateusNatal" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a></li>
+          <li><a href="https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="bi bi-spotify" aria-hidden="true"></i></a></li>
+        </ul>
       </div>
 
-      <nav id="navbar" class="nav-menu navbar">
+      <nav id="navbar" class="nav-menu" aria-label="Seções do site">
         <ul>
-          <li><a href="index.html" class="nav-link"><i class="bx bx-home"></i> <span>Início</span></a></li>
-          <li><a href="index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>Sobre</span></a></li>
-          <li><a href="index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Currículo</span></a></li>
-          <li><a href="index.html#portfolio" class="nav-link active"><i class="bx bx-book-content"></i> <span>Portfólio</span></a></li>
-          <li><a href="index.html#services" class="nav-link"><i class="bx bx-server"></i> <span>Serviços</span></a></li>
-          <li><a href="index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contato</span></a></li>
+          <li><a href="index.html#hero" class="nav-link"><i class="bi bi-house" aria-hidden="true"></i><span>Início</span></a></li>
+          <li><a href="index.html#about" class="nav-link"><i class="bi bi-person" aria-hidden="true"></i><span>Sobre</span></a></li>
+          <li><a href="index.html#skills" class="nav-link"><i class="bi bi-stars" aria-hidden="true"></i><span>Habilidades</span></a></li>
+          <li><a href="index.html#resume" class="nav-link"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span>Currículo</span></a></li>
+          <li><a href="index.html#portfolio" class="nav-link is-current" aria-current="page"><i class="bi bi-grid" aria-hidden="true"></i><span>Portfólio</span></a></li>
+          <li><a href="index.html#services" class="nav-link"><i class="bi bi-briefcase" aria-hidden="true"></i><span>Serviços</span></a></li>
+          <li><a href="index.html#contact" class="nav-link"><i class="bi bi-envelope" aria-hidden="true"></i><span>Contato</span></a></li>
         </ul>
       </nav>
+
+      <div class="sidebar-foot">
+        <button type="button" class="theme-toggle" data-theme-toggle>
+          <i class="bi bi-sun" aria-hidden="true"></i>
+          <span>Usar tema claro</span>
+        </button>
+      </div>
+
     </div>
   </header>
 
   <main id="main">
 
-    <section class="breadcrumbs">
-      <div class="container">
-        <nav aria-label="Caminho de navegação">
-          <ol>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#portfolio">Portfólio</a></li>
-            <li id="crumb-title" aria-current="page">Projeto</li>
-          </ol>
-        </nav>
-      </div>
-    </section>
+    <nav class="breadcrumbs" aria-label="Caminho de navegação">
+      <ol class="container">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#portfolio">Portfólio</a></li>
+        <li id="crumb-title" aria-current="page">Projeto</li>
+      </ol>
+    </nav>
 
-    <section class="portfolio-details">
+    <section class="case-page">
       <div class="container">
 
-        <!-- Preenchido por assets/js/site.js -->
-        <div id="project-content" class="row gy-4">
-          <div class="col-12">
-            <p class="project-loading">Carregando projeto…</p>
-          </div>
+        <!-- Preenchido por assets/js/site.js com os dados de PROJECTS -->
+        <div id="project-content">
+          <p class="project-loading">Carregando projeto…</p>
         </div>
 
         <noscript>
@@ -115,23 +115,17 @@
 
   <footer id="footer">
     <div class="container">
-      <div class="credits">
+      <p class="credits">
         &copy; <span id="current-year">2026</span> Mateus Natal. Todos os direitos reservados.
-      </div>
+      </p>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Voltar ao topo"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#main" class="back-to-top" aria-label="Voltar ao topo">
+    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
+  </a>
 
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
   <script src="assets/js/main.js"></script>
   <script src="assets/js/site.js"></script>
 </body>

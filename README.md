@@ -1,6 +1,6 @@
 # Portfólio pessoal – Mateus Natal
 
-Site de portfólio com meus trabalhos em design gráfico, identidade visual, produtos promocionais e desenvolvimento web. Apresenta minha trajetória profissional, habilidades, serviços e formas de contato.
+Site de portfólio com meus trabalhos em design gráfico, identidade visual, produtos personalizados e desenvolvimento web. Apresenta minha trajetória profissional, habilidades, serviços e formas de contato.
 
 ## Objetivo
 
@@ -8,46 +8,47 @@ Reunir em um só lugar os meus trabalhos e informações profissionais, facilita
 
 ## Seções
 
-- **Início**: apresentação com destaque para as áreas de atuação.
+- **Início**: apresentação com o nome, a área de atuação e botões para o portfólio e para o contato.
 - **Sobre**: resumo profissional e dados de contato.
-- **Habilidades**: principais ferramentas e linguagens utilizadas.
-- **Currículo**: formação acadêmica, cursos técnicos e experiência profissional.
-- **Portfólio**: projetos organizados por categoria (identidade visual, web, produtos e embalagens), com ampliação de imagem e página de detalhes.
-- **Serviços**: design gráfico, front-end, back-end, desenvolvimento web e interfaces de aplicações.
-- **Contato**: e-mail, WhatsApp, Instagram, Spotify, GitHub e LinkedIn.
+- **Habilidades**: ferramentas e competências agrupadas por especialidade, com onde cada grupo aparece nos projetos.
+- **Currículo**: resumo, experiência profissional e formação.
+- **Portfólio**: destaques em carrossel, filtros por categoria e estudo de caso de cada projeto (em janela ou em página própria).
+- **Serviços**: design gráfico e impressos, identidade visual, desenvolvimento de sites e aplicações e automações.
+- **Contato**: WhatsApp e e-mail em destaque, redes sociais como canais secundários e mapa de Belo Horizonte.
 
 ## Funcionalidades
 
-- Layout responsivo para celulares, tablets e desktops, com menu lateral que vira gaveta em telas menores.
-- Modo claro e modo escuro, com a preferência salva no navegador. Na primeira visita, o site segue a configuração do sistema operacional.
-- Filtros de projetos por categoria.
-- Visualização ampliada das imagens dos projetos.
-- Página de detalhes de cada projeto, carregada a partir do endereço (`portfolio-details.html?p=...`).
-- Animações de entrada e barras de habilidades, sem bibliotecas adicionais de framework.
+- Barra lateral fixa com o menu no computador; em telas menores, uma barra superior com menu em gaveta (fecha com Escape ou ao tocar fora).
+- A seção atual fica destacada no menu enquanto você rola a página.
+- Tema escuro por padrão, com alternância para o tema claro. A escolha fica salva no navegador.
+- Filtros de projetos por categoria, com transição suave.
+- Estudo de caso em janela (modal) com galeria de imagens, navegação por teclado e foco gerenciado. Também acessível em página própria (`portfolio-details.html?p=...`).
+- Animações discretas de entrada, com respeito à preferência de movimento reduzido do sistema.
+- Mapa do Google Maps incorporado na seção de contato (incorporação pública, sem chave de API).
 
 ## Tecnologias
 
 - HTML5 e CSS3
 - JavaScript (vanilla)
 - [Bootstrap 5](https://getbootstrap.com/) (grid e utilitários)
-- [Bootstrap Icons](https://icons.getbootstrap.com/) e [Boxicons](https://boxicons.com/)
-- [AOS](https://michalsnik.github.io/aos/), [GLightbox](https://github.com/biati-digital/glightbox), [Isotope](https://isotope.metafizzy.co/), [Typed.js](https://github.com/mattboldt/typed.js/), [Swiper](https://swiperjs.com/) e [PureCounter](https://github.com/srexi/purecounterjs)
-- Fontes Google: Open Sans, Raleway e Poppins
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+- [Swiper](https://swiperjs.com/) (carrossel de destaques e galeria dos projetos)
+- Fontes Google: Poppins e Open Sans
 
 Não há etapa de build: o site é estático e roda diretamente nos arquivos.
 
 ## Estrutura do projeto
 
 ```
-index.html                  Página principal
+index.html                  Página principal (inclui o modal de estudo de caso)
 portfolio-details.html      Página de detalhes dos projetos (preenchida por JavaScript)
 assets/
-  css/style.css             Estilos base
-  css/custom.css            Identidade visual, tema claro/escuro e responsividade
-  js/main.js                Navegação, filtros, animações e galeria
-  js/site.js                Tema, dados dos projetos e página de detalhes
-  img/                      Foto de perfil, imagem de fundo e fotos gerais
-  img/portfolio/            Imagens otimizadas dos projetos
+  css/style.css             Estrutura: barra lateral, menu móvel, seções e rodapé
+  css/custom.css            Identidade visual: cores (tokens de tema), componentes e responsividade
+  js/main.js                Menu, seção atual, filtros, revelação ao rolar e botão de voltar ao topo
+  js/site.js                Tema, dados dos projetos (PROJECTS), destaques, modal e página de detalhes
+  img/                      Foto de perfil, imagens gerais e favicon
+  img/portfolio/            Imagens dos projetos
   vendor/                   Bibliotecas de terceiros
 ```
 
@@ -71,8 +72,15 @@ Depois acesse `http://localhost:3000` (serve) ou `http://localhost:8000` (Python
 ## Adicionando um projeto
 
 1. Otimize a imagem (recomendado: largura de 1200 px, formato JPG ou WebP) e salve em `assets/img/portfolio/`, com um nome descritivo em minúsculas e sem espaços, por exemplo `cliente-logo.jpg`.
-2. Adicione um bloco de projeto em `index.html`, dentro de `.portfolio-container`, usando uma das categorias existentes (`filter-identidade`, `filter-web`, `filter-produtos` ou `filter-embalagens`).
-3. Adicione uma entrada no objeto `PROJECTS` em `assets/js/site.js`, com a mesma chave usada no parâmetro `?p=` do link.
+2. Adicione um bloco `<article class="portfolio-item">` em `index.html`, dentro de `#portfolio-grid`. O atributo `data-cat` define as categorias do filtro, separadas por espaço: `identidade`, `web`, `produtos`, `embalagens`, `impressos` ou `placas`. Use `data-featured` para exibir o selo "Destaque". Em logotipos e artes quadradas, marque a miniatura com `data-fit="contain"` (a imagem aparece inteira); fotos e mockups usam o recorte padrão.
+3. Adicione uma entrada no objeto `PROJECTS` em `assets/js/site.js`, com a mesma chave usada no parâmetro `?p=` do link (`data-project`).
+
+Campos do `PROJECTS`:
+
+- **Obrigatórios:** `title`, `category`, `images` (lista de caminhos), `description` (contexto e objetivo) e `role` (minha contribuição).
+- **Opcionais** (o bloco só aparece no estudo de caso quando preenchido): `problem` (problema ou necessidade), `solution` (conceito e solução), `process` (lista de etapas), `tools` (lista de ferramentas), `results` (resultado), `learnings` (aprendizados) e `links` (lista de `{ label, url }` para o projeto ou o código).
+
+Preencha apenas informações verdadeiras. Campos ausentes simplesmente não são exibidos.
 
 ## Publicação no GitHub Pages
 
@@ -100,3 +108,4 @@ Os caminhos usados no site são relativos (por exemplo, `assets/css/style.css`),
 - Instagram: [@mateusdiasnatal](https://www.instagram.com/mateusdiasnatal/)
 - GitHub: [github.com/MateusNatal](https://github.com/MateusNatal)
 - LinkedIn: [linkedin.com/in/mateus-natal](https://www.linkedin.com/in/mateus-natal/)
+- Spotify: [Mateus Natal](https://open.spotify.com/user/gl5842yqh6wpzvgr99jpq20lp)
